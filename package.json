@@ -7,14 +7,19 @@
   "license": "MIT",
   "scripts": {
     "dev": "parcel index.html",
-    "build": "parcel build ether.js",
+    "build": "parcel build --no-content-hash ether.js && rm dist/ether.js dist/ether.js.map",
     "lint": "sass-lint -v"
   },
-  "dependencies": {
-    "src": "^1.1.2"
-  },
   "devDependencies": {
+    "cssnano": "^4.1.10",
+    "husky": "^3.0.1",
     "sass": "^1.22.7",
     "sass-lint": "^1.13.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint",
+      "pre-push": "yarn build"
+    }
   }
 }

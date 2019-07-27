@@ -1,0 +1,66 @@
+version: 2.1
+
+references:
+  node_defaults: &node_defaults
+    working_directory: ~/repo
+    docker:
+      - image: node:lastest-alpine
+
+jobs:
+  checkout:
+    <<: *node_defaults
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - .
+
+  install_dependencies:
+    <<: *node_defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run: yarn install
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/repo/node_modules
+            - ~/.cache/yarn
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - node_modules
+
+  run_sass_lint:
+    <<: *node_defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run: yarn lint
+
+  build_dist:
+    <<: *node_defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run: yarn build
+
+workflows:
+  lint-and-build:
+    jobs:
+      - checkout_code
+      - install_dependencies:
+          requires:
+            - checkout_code
+      - run_sass_lint:
+          requires:
+            - install_dependencies
+      - build_dist:
+          requires:
+            - install_dependencies

@@ -4,7 +4,7 @@ references:
   node_defaults: &node_defaults
     working_directory: ~/repo
     docker:
-      - image: node:lastest-alpine
+      - image: node:latest-alpine
 
 jobs:
   checkout_code:

@@ -10,6 +10,7 @@ jobs:
   checkout_code:
     <<: *node_defaults
     steps:
+      - run: apk add ca-certificates
       - checkout
       - persist_to_workspace:
           root: ~/repo

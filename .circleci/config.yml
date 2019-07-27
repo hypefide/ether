@@ -7,7 +7,7 @@ references:
       - image: node:lastest-alpine
 
 jobs:
-  checkout:
+  checkout_code:
     <<: *node_defaults
     steps:
       - checkout

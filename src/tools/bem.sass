@@ -1,0 +1,15 @@
+=element($name)
+  &__#{$name}
+    @content
+
+=modifier($name)
+  &--#{$name}
+    @content
+
+=e($args...)
+  +element($args...)
+    @content
+
+=m($args...)
+  +modifier($args...)
+    @content

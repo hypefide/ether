@@ -22,6 +22,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
+      - run: apk add ca-certificates
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:

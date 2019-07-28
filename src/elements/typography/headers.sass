@@ -1,0 +1,20 @@
+$rest-of-headers: h4, h5, h6
+
+%header
+  font-weight: $font-weight-bold
+
+@function sizing-progression($n)
+  @return 2 - (($n - 1) / 2)
+
+=set-header-sizing($font-size)
+  font-size: #{$font-size}rem
+  margin-bottom: #{($font-size / 2)}rem
+  margin-top: #{$font-size}rem
+
+@for $i from 1 through 3
+  h#{$i}
+    @extend %header
+    +set-header-sizing(sizing-progression($i))
+
+#{$rest-of-headers}
+  @extend h3

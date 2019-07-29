@@ -1,6 +1,6 @@
 # Ether
 [![Maintainability](https://api.codeclimate.com/v1/badges/49f9457197499e5ee89a/maintainability)](https://codeclimate.com/github/hypefide/ether/maintainability)
-![npm (scoped)](https://img.shields.io/npm/v/@hypefide/ether)
+[![npm (scoped)](https://img.shields.io/npm/v/@hypefide/ether)](https://www.npmjs.com/package/@hypefide/ether)
 
 A styling protoframework meant for a rapid Web Development.
 

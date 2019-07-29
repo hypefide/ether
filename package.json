@@ -1,5 +1,5 @@
 {
-  "name": "ether",
+  "name": "@ether/base",
   "version": "0.0.1",
   "description": "Styling protoframework",
   "main": "index.js",

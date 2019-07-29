@@ -16,5 +16,5 @@ $rest-of-headers: h4, h5, h6
     @extend %header
     +set-header-sizing(sizing-progression($i))
 
-#{$rest-of-headers}
-  @extend h3
+#{$rest-of-headers} // sass-lint:disable-line empty-line-between-blocks
+  @extend h3 // sass-lint:disable-line placeholder-in-extend

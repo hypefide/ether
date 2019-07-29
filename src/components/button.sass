@@ -1,0 +1,68 @@
+$color-primary-shadow-light: rgba($color-primary, .25)
+$color-primary-shadow: rgba($color-primary, .5)
+$color-secondary-shadow-light: rgba($color-secondary, .25)
+$color-secondary-shadow: rgba($color-secondary, .5)
+
+=set-outline($border-color)
+  +set-border-with-radius($color-grey-light)
+  background-color: transparent
+  border-width: 2px
+
+=add-outline($outline-color, $font-color: $color-secondary)
+  &-outline
+    +set-outline($outline-color)
+    color: $font-color
+
+.button // sass-lint:disable-line empty-line-between-blocks
+  @extend button // sass-lint:disable-line placeholder-in-extend
+
+  +m('small')
+    padding: ($button-vertical-padding - $button-padding-step) ($button-horizontal-padding - $button-padding-step)
+
+  +m('large')
+    padding: ($button-vertical-padding + $button-padding-step) ($button-horizontal-padding + $button-padding-step)
+
+  +m('primary')
+    +add-outline($color-primary)
+    background-color: $color-primary
+    color: $color-white
+
+    &:hover
+      box-shadow: 0 .25rem .375rem $color-primary-shadow-light
+
+    &:active
+      box-shadow: 0 .25rem .375rem $color-primary-shadow
+
+  +m('secondary')
+    +add-outline($color-secondary)
+    background-color: $color-secondary
+    color: $color-white
+
+    &:hover
+      box-shadow: 0 .25rem .375rem $color-secondary-shadow-light
+
+    &:active
+      box-shadow: 0 .25rem .375rem $color-secondary-shadow
+
+  +m('safe')
+    +add-outline($color-safe, $color-safe)
+    background-color: $color-safe
+    color: $color-white
+
+  +m('warning')
+    +add-outline($color-warning, $color-warning)
+    background-color: $color-warning
+    color: $color-white
+
+  +m('danger')
+    +add-outline($color-danger, $color-danger)
+    background-color: $color-danger
+    color: $color-white
+
+  +m('fullwidth')
+    display: block
+    text-align: center
+    width: 100%
+
+  +m('outline')
+    +set-outline($color-grey-light)
